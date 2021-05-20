@@ -5,23 +5,25 @@ window.addEventListener('load', bankAccount);
     let withdraw = document.getElementById('withdraw');
     let display = document.getElementById('display');
     let balance = 0;
+    let ownerName;
     function init() {
-        uName.addEventListener('click', function () {
-            let myName = prompt("Enter your Name");
-            console.log(myName);
-            display.innerHTML = myName;
-        });
-        deposit.addEventListener('click', function () {
-            let addDeposit = parseFloat(prompt("Amount to deposit"));
-            balance += addDeposit;
-            console.log(balance);
-            display.innerHTML = balance;
-        });
-        withdraw.addEventListener('click', function () {
-            let subractBalance = parseFloat(prompt("Amount to withdraw"));
-            balance -= subractBalance
-            console.log(balance);
-            display.innerHTML = balance;
+        uName.addEventListener('click', function (ownerName) {
+            ownerName = prompt("Enter your Name");
+            let owner = ownerName
+            console.log(owner);
+            display.innerHTML = owner;
+            deposit.addEventListener('click', function () {
+                let addDeposit = parseFloat(prompt("Amount to deposit"));
+                balance += addDeposit;
+                console.log(balance);
+                display.innerHTML = (`${owner}` + ` Balance: ${balance}`);
+            });
+            withdraw.addEventListener('click', function () {
+                let subractBalance = parseFloat(prompt("Amount to withdraw"));
+                balance -= subractBalance
+                console.log(balance);
+                display.innerHTML = (`${owner}` + ` Balance: ${balance}` );
+            });
         });
     }
     init();
