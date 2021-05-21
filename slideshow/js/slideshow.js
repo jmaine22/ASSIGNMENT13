@@ -37,7 +37,9 @@ const createSlideshow = function () {
         if(speedBtn) {
             btn.value = 'Speed';
             if (btn.value === 'Speed'){
-                prompt('Current Speed');
+                let speedChecker = prompt(`Current Speed: ${speed}`);
+                speedChecker = parseFloat(speedChecker);
+                console.log(speedChecker);
             }
         }
     };
