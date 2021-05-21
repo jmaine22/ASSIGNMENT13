@@ -7,7 +7,7 @@ const createSlideshow = function () {
     // PRIVATE VARIABLES AND FUNCTIONS
     let timer;
     let play = true;
-    let speedBtn = true;
+    let speedBtn;
     let speed = 2000;
     
     let nodes = { image: null, caption: null };
@@ -34,7 +34,9 @@ const createSlideshow = function () {
         }
     };
     const setSpeedText = function (btn) {
-        if(speedBtn) {
+        speedBtn = true;
+        //play = false;
+        if(speedBtn == true) {
             btn.value = 'Speed';
             if (btn.value === 'Speed'){
                 let speedChecker = prompt(`Current Speed: ${speed}`);
@@ -78,6 +80,7 @@ const createSlideshow = function () {
                 // TOGGLE PLAY 'FLAG'
                 play = !play;
                 setSpeedText(this);
+                speedBtn = !speedBtn;
             };
         }
     };
