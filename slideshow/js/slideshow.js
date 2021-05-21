@@ -31,18 +31,14 @@ const createSlideshow = function () {
             btn.value = 'Resume';
         } else {
             btn.value = 'Pause';
-        }
+        } 
     };
     const setSpeedText = function (btn) {
-        speedBtn = true;
-        //play = false;
-        if(speedBtn == true) {
-            btn.value = 'Speed';
-            if (btn.value === 'Speed'){
-                let speedChecker = prompt(`Current Speed: ${speed}`);
-                speedChecker = parseFloat(speedChecker);
-                console.log(speedChecker);
-            }
+        btn.value = 'Speed';
+        if (btn.value === 'Speed'){
+            let speedChecker = prompt(`Current Speed: ${speed}`);
+            speedChecker = parseFloat(speedChecker);
+            console.log(speedChecker);
         }
     };
     // PUBLIC METHODS THAT HAVE ACCESS TO PRIVATE VARIABLES AND FUNCTIONS
@@ -79,6 +75,9 @@ const createSlideshow = function () {
                 setPlayText(this);
                 // TOGGLE PLAY 'FLAG'
                 play = !play;
+                if (speedBtn) {
+                    stopSlideShow();
+                }
                 setSpeedText(this);
                 speedBtn = !speedBtn;
             };
@@ -100,7 +99,7 @@ window.addEventListener('load', () => {
 	// START THE SLIDESHOW
     slideshow.loadImages(slides).startSlideShow($('image'), $('caption'));
     // PAUSE THE SLIDESHOW
-    $('play_pause').onclick = slideshow.createToggleHandler();
     $('play_speed').onclick = slideshow.createToggleHandler();
+    $('play_pause').onclick = slideshow.createToggleHandler();
     //
 });
